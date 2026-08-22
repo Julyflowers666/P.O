@@ -24,10 +24,16 @@ class Cliente:
 
     def set_telefone(self,telefone):
 
-        if telefone <= 0:
-            print("Error: o telefone tem q possuir 9 numeros ")
-        
-    
+        while True:
+            
+            telefone = input("Digite o seu telefone (com DDD): ")
+# Remove espaços ou caracteres especiais, se quiser
+            telefone_limpo = "".join(filter(str.isdigit, telefone))
+# Verifica se o tamanho tem 10 ou 11 dígitos (ex: 11988887777)
+            if len(telefone_limpo) == 11 or len(telefone_limpo) == 10:
+                print("Telefone válido!")
+            else:
+                print("Telefone inválido. Digite o número com DDD.")
 
     def exibir_dados(self):
 

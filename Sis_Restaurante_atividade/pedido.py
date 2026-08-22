@@ -7,6 +7,12 @@ class Pedidos(Cliente, Produto):
         self.nome = nome
         self.preço = preço
 
+    def fazer_pedido(self):
+        
+
+
+
+
     def exibir_dados(self):
 
         print(f"Código: {self.codigo}")

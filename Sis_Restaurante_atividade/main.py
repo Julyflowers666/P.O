@@ -6,6 +6,7 @@ from refeicao import Refeicao
 from sobremesa import Sobremesa
 
 def cadastrar_cliente():
+    print("\n--- CADASTRO DO CLIENTE ---")
     while True:
         try:
             codigo = int(input("Informe o seu código: "))
@@ -13,7 +14,6 @@ def cadastrar_cliente():
         except ValueError:
             print("Digite um código numérico válido.")
 
-    # Validação do nome antes de criar o objeto.
     while True:
         nome = input("Informe seu nome: ").strip()
 
@@ -24,11 +24,19 @@ def cadastrar_cliente():
 
     while True:
             
-            telefone = int(input("Informe o telefone: "))
-
+            telefone = input("Digite o seu telefone (com DDD): ")
+# Remove espaços ou caracteres especiais, se quiser
+            telefone_limpo = "".join(filter(str.isdigit, telefone))
+# Verifica se o tamanho tem 10 ou 11 dígitos (ex: 11988887777)
+            if len(telefone_limpo) == 11 or len(telefone_limpo) == 10:
+                print("Telefone válido!")
+            else:
+                print("Telefone inválido. Digite o número com DDD.")
+                return cadastrar_cliente()
 
             return Cliente(codigo, nome, telefone)
-                
+
+
 def main():
 
     print("====================================")
