@@ -6,6 +6,13 @@ from produto import Produto
 from refeicao import Refeicao
 from sobremesa import Sobremesa
 
+clientes = []
+
+def menu():
+    while True:
+        print("-----Menu Refeições------")
+
+
 def cadastrar_funcionario():
     print("\n--- CADASTRO DO FUNCIONARIO ---")
     while True:
@@ -70,38 +77,48 @@ def cadastrar_cliente():
 
             if len(telefone_limpo) == 11 or len(telefone_limpo) == 10:
                 print("Telefone válido!")
+                break
             else:
                 print("Telefone inválido. Digite o número com DDD.")
-                return cadastrar_cliente()
 
-            return Cliente(codigo, nome, telefone)
-            
+    return Cliente(codigo, nome, telefone)           
 
-def Menu():
+def Sistema_principal():
 
     print("------------------------------")
     print("   SISTEMA DE PEDIDOS DE RESTAURANTE      ")
     print("------------------------------")
     while True:
+
         print("--------- MENU ----------")
         print("1- Cadastrar Cliente")
         print("2- Cadastrar Funcionario")
         print("3- Cadastrar produto")
         print("4- Listar produtos")
+        print("5- Ver Dados dos Clientes")
+        print("6- Ver Dados do Funcionarios")
         print("0- Sair")
 
         op = input("Escolha uma opção: ")
 
         if op == "1":
-            cadastrar_cliente()
+            cliente = cadastrar_cliente()
+            clientes.append(cliente)
+            print("Cliente cadastrado com sucesso!")
+
+
         elif op == "2":
             cadastrar_funcionario()
         elif op == "3":
             Funcionario.cadastrar_produto()
-            Produto.exibir_produto()
-
         elif op == "4":
             Produto.exibir_produto()
+        elif op == "5":
+            for cliente in clientes:
+                cliente.exibir_dados()
+        elif op == "6":
+            for funcionario in lista_funcionarios:
+                funcionario.exibir_dados_Funcionario()
 
         elif op == "0":
             print("Sistema encerrado.")
@@ -110,8 +127,28 @@ def Menu():
         else:
             print("Opção inválida.")
 
-if __name__ == "__main__":
-    Menu()
+def produtos ():
 
-funcionario1 = Funcionario("João", "12345678911", "00123")
-produto1 = Produto("laranja",12.00,"00056")
+    produto1 = Produto("Hambúrguer", 25.00, 12)
+    produto2 = Produto("Batata Frita", 12.00, 13)
+    produto3 = Produto("Refrigerante", 7.00, 7)
+
+    return [produto1, produto2, produto3]
+
+#def funcionarios ():
+#
+#   funcionario1 = Funcionario("João", "12345678911", 123)
+#    funcionario2 = Funcionario("ana", "12345678912", 132)
+#    funcionario3 = Funcionario("vitor", "12345678913", 143)
+
+#    return [funcionario1,funcionario2, funcionario3]
+
+#def cliente():
+#    cliente1 = Cliente(144, "clara", "1234567899")
+#
+#    return [cliente1]
+
+
+
+if __name__ == "__main__":
+    Sistema_principal()

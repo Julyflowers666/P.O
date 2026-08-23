@@ -1,9 +1,11 @@
+
 def menu():
     while True:
         print("-----Menu Refeições------")
-        print("1-x-salada")
-        print("2-carne assada")
-        print("3-peixe")
+        produto1.mostrar()
+        produto2.mostrar()
+        produto3.mostrar()
+
         op = int(input("escolha sua refeição: "))
         cnt = input("deseja escolhe bebida?:[s/n] ")
 

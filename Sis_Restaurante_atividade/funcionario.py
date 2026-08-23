@@ -4,10 +4,13 @@ lista_funcionarios = []
 
 class Funcionario:
     def __init__(self,nome,telefone,codigo):
-        self.__nome = nome
-        self.__telefone = telefone
+        self.__nome = ""
+        self.__telefone = ""
         self.codigo = codigo
         #self.__funcionarios = []
+
+        self.set_nome(nome)
+        self.set_telefone(telefone)
 
     def get_nome(self):
                 
@@ -38,7 +41,10 @@ class Funcionario:
                 print("Telefone válido!")
             else:
                 print("Telefone inválido. Digite o número com DDD.")
-    
+
+            self.__telefone = telefone_limpo
+            return True
+        
     def cadastrar_produto():
         if len(lista_funcionarios) == 0:
             print("nenhum funcionário cadastrado.")

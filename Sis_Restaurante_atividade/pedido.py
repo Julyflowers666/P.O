@@ -1,13 +1,25 @@
 from cliente import Cliente
 from produto import Produto
 
-class Pedidos(Cliente, Produto):
-    def __init__(self, codigo, nome, status, telefone):
-        super().__init__(codigo, nome,telefone, status,)
-        self.status = "indisponivel"
-        self.codigo = codigo
+class Pedidos (Produto):
+    def __init__(self, cliente):
+        self.cliente = cliente
+        self.produtos = []
+        self.status = "aberto"
         
 
+    def Fazer_pedido(self, Produto):
+
+        self.produtos.append(produto)
+
+        print(f"{produto.get_nome()} foi adicionado ao pedido.")
+
+        return True
+
+        if self.status == "fechado":
+            print("O pedido já está fechado!")
+            print("Não é possível adicionar novos produtos.")
+            return False
 
     def exibir_dados(self):
 

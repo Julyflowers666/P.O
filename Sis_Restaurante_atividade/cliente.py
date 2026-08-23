@@ -1,11 +1,13 @@
 class Cliente:
     def __init__(self,codigo,nome,telefone):
         self.codigo = codigo
-        self.__nome = nome
-        self.__telefone = telefone
+        self.__nome = ""
+        self.__telefone = ""
+
+        self.set_nome(nome)
+        self.set_telefone(telefone)
 
     def get_nome(self):
-                
             return self.__nome
         
     def set_nome(self, nome):
@@ -26,15 +28,15 @@ class Cliente:
 
         while True:
             
-            telefone = input("Digite o seu telefone (com DDD): ")
-# Remove espaços ou caracteres especiais, se quiser
             telefone_limpo = "".join(filter(str.isdigit, telefone))
 # Verifica se o tamanho tem 10 ou 11 dígitos (ex: 11988887777)
             if len(telefone_limpo) == 11 or len(telefone_limpo) == 10:
-                print("Telefone válido!")
+                self.__telefone = telefone_limpo
+                return True
             else:
                 print("Telefone inválido. Digite o número com DDD.")
-
+                return False
+        
     def exibir_dados(self):
 
         print("----------dados do cliente----------")
