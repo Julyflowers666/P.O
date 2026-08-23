@@ -37,6 +37,7 @@ class Cliente:
 
     def exibir_dados(self):
 
+        print("----------dados do cliente----------")
         print(f"Código: {self.codigo}")
         print(f"Nome: {self.__nome}")
         print(f"Telefone: {self.__telefone}")
