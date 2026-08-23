@@ -1,11 +1,13 @@
 from produto import Produto
 
+lista_funcionarios = []
+
 class Funcionario:
     def __init__(self,nome,telefone,codigo):
         self.__nome = nome
         self.__telefone = telefone
         self.codigo = codigo
-        self.__funcionarios = []
+        #self.__funcionarios = []
 
     def get_nome(self):
                 
@@ -36,12 +38,9 @@ class Funcionario:
                 print("Telefone válido!")
             else:
                 print("Telefone inválido. Digite o número com DDD.")
-
-    def get_funcionarios(self):
-        return self.__funcionarios
     
-    def cadastrar_produto(self):
-        if len(self.__funcionarios) == 0:
+    def cadastrar_produto():
+        if len(lista_funcionarios) == 0:
             print("nenhum funcionário cadastrado.")
             print("Cadastre um funcionário antes de cadastrar produtos.")
             return
