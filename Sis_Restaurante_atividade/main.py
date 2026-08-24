@@ -99,6 +99,21 @@ def cadastrar_funcionario():
     print("\n--- CADASTRO DO FUNCIONARIO ---")
     while True:
         try:
+            nome = input("Informe seu nome: ").strip()
+                
+            if len(nome) < 3:
+                print("O nome deve possuir pelo menos três caracteres.")
+
+            elif not nome.replace(" ", "").isalpha():
+                print("Não é permitido números ou símbolos.")
+            else:
+                break
+                
+        except ValueError:
+            print("não é permitido numeros") 
+
+    while True:
+        try:
             codigo = int(input("Informe o seu código: "))
             break
         except ValueError:
@@ -112,16 +127,10 @@ def cadastrar_funcionario():
             if len(telefone_limpo) == 11 or len(telefone_limpo) == 10:
                 print("Telefone válido!")
                 break
+
             else:
                 print("Telefone inválido. Digite o número com DDD.")
         
-    while True:
-            nome = input("Informe seu nome: ").strip()
-            
-            if len(nome) >= 3:
-                break
-            print("O nome deve possuir pelo menos três caracteres.")
-
     funcionario = Funcionario (nome, telefone,codigo)
     lista_funcionarios.append(funcionario)
     print("Funcionário cadastrado com sucesso!")
@@ -144,12 +153,23 @@ def cadastrar_cliente():
             print("Digite um código numérico válido.")
 
     while True:
-        nome = input("Informe seu nome: ").strip()
+        try:
+            nome = input("Informe seu nome: ").strip()
 
-        if len(nome) >= 3:
-            break
+            if len(nome) < 3:
 
-        print("O nome deve possuir pelo menos três caracteres.")
+                print("O nome deve possuir pelo menos três caracteres.")
+                
+            elif not nome.replace(" ", "").isalpha():
+                print("Não é permitido números ou símbolos.")
+            else:
+                break 
+                      
+            print("O nome deve possuir pelo menos três caracteres.")
+
+        except ValueError:
+            print("não é permitido numeros")    
+
 
     while True:
             

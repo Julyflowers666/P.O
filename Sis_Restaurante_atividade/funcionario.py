@@ -26,6 +26,8 @@ class Funcionario:
         if len(nome) < 3:
             print("Erro: o nome deve possuir pelo menos três caracteres.")
             return False
+        elif not nome.replace(" ", "").isalpha():
+            print("Não é permitido números ou símbolos.")
 
         self.__nome = nome
         return True
