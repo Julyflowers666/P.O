@@ -6,12 +6,93 @@ from produto import Produto
 from refeicao import Refeicao
 from sobremesa import Sobremesa
 
-clientes = []
-lista_produtos = produtos()
+def selecionar_cliente():
 
-def menu():
+    if len(clientes) == 0:
+        print("Nenhum cliente cadastrado.")
+        return None
+
+    print("\n========== CLIENTES ==========")
+
+    for cliente in clientes:
+        print(f"Código: {cliente.get_codigo()} | Nome: {cliente.get_nome()}")
+
+    try:
+        codigo = int(input("Digite o código do cliente: "))
+    except ValueError:
+        print("Digite apenas números.")
+        return None
+
+    for cliente in clientes:
+        if cliente.get_codigo() == codigo:
+            return cliente
+
+    print("Cliente não encontrado.")
+    return None
+
+def Fazer_pedido(cliente, lista_produtos):
+
+    pedido = Pedidos(cliente)
+
     while True:
-        print("-----Menu Refeições------")
+        print("========== MENU DO PEDIDO ==========")
+        print("1 - Adicionar produto")
+        print("2 - Exibir pedido")
+        print("3 - Finalizar pedido")
+        print("4 - Sair")
+        try:
+            op = int(input("Escolha uma opção: "))
+        except ValueError:
+            print("Digite apenas números.")
+            continue
+
+        if op == 1:
+
+            if len(lista_produtos) == 0:
+                print("Nenhum produto cadastrado.")
+                continue
+
+            print("\n========== PRODUTOS ==========")
+
+            for produto in lista_produtos:
+                print(f"Código: {produto.codigo()} | "f"Nome: {produto.get_nome()} | "f"Preço: R$ {produto.calcular_preco():.2f}")
+
+            
+            try:
+                codigo = int(input("\nDigite o código do produto: "))
+
+            except ValueError:
+                print("Digite apenas números.")
+                continue
+
+            produto_encontrado = None
+
+            for produto in lista_produtos:
+
+                if produto.codigo() == codigo:
+                    produto_encontrado = produto
+                    break
+
+            if produto_encontrado is None:
+                print("Produto não encontrado.")
+                continue
+
+            pedido.adicionar_produto(produto_encontrado)
+
+        elif op == 2:
+            pedido.exibir_pedido()
+
+        elif op == 3:
+            if pedido.fechar_pedido():
+                pedido.exibir_pedido()
+                break
+
+        elif op == 4:
+            print("Saindo do pedido...")
+            break
+
+        else:
+            print("Opção inválida.")
 
 
 def cadastrar_funcionario():
@@ -104,55 +185,67 @@ def Sistema_principal():
         op = input("Escolha uma opção: ")
 
         if op == "1":
-            Pedidos
+            
+            cliente = selecionar_cliente()
+
+            if cliente is not None:
+                Fazer_pedido(cliente, lista_produtos)
 
         elif op == "2":
             cliente = cadastrar_cliente()
             clientes.append(cliente)
             print("Cliente cadastrado com sucesso!")
+
         elif op == "3":
             cadastrar_funcionario()
+
         elif op == "4":
+
             produto = Funcionario.cadastrar_produto()
+
             if produto is not None:
                 lista_produtos.append(produto)
 
+        elif op == "5":
             if len(lista_produtos) == 0:
                 print("Nenhum produto cadastrado.")
+
             else:
                 print("\n========== PRODUTOS ==========")
-            for produto in lista_produtos:
-                produto.exibir_produto()
-                print("----------------------------")
+                for produto in lista_produtos:
+                    produto.exibir_produto()
+                    print("----------------------------")
 
-        elif op == "5":
-            Produto.exibir_produto()
         elif op == "6":
             for cliente in clientes:
                 cliente.exibir_dados()
+
         elif op == "7":
             for funcionario in lista_funcionarios:
                 funcionario.exibir_dados_Funcionario()
+
         elif op == "0":
             print("Sistema encerrado.")
             break
 
         else:
             print("Opção inválida.")
+def produtos():
+    #lista_de_produtos =[]
+    produto1 = Refeicao("Hambúrguer", 25.00, 12, "grande")
+    produto2 = Refeicao("Batata Frita", 12.00, 13, "medio")
 
-def produtos ():
-    lista_de_produtos =[]
-    produto1 = Produto("Hambúrguer", 25.00, 12, "grande")
-    produto2 = Produto("Batata Frita", 12.00, 13)
+    produto3 = Bebida("Refrigerante", 7.00, 7, 400)
+    produto4 = Bebida("Refrigerante", 7.00, 9, 600)
 
-    produto3 = Produto("Refrigerante", 7.00, 7, 400)
-    produto4 = Produto("Refrigerante", 7, 9, 600)
+    produto5 = Refeicao("Hambúrguer", 25.00, 11, "medio")
 
-    produto5 = Produto("Hambúrguer", 25.00, 11, "Medio")
-    
-    produto6 = Sobremesa("Pudim",20.00, 20, "especial")
+    produto6 = Sobremesa("Pudim", 20.00, 20, "especial")
 
     return [produto1, produto2, produto3, produto4, produto5, produto6]
+
+lista_produtos = produtos()
+clientes = []
 
 #def funcionarios ():
 #
@@ -166,7 +259,6 @@ def produtos ():
 #    cliente1 = Cliente(144, "clara", "1234567899")
 #
 #    return [cliente1]
-
 
 
 if __name__ == "__main__":

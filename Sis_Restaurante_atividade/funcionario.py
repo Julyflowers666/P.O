@@ -1,4 +1,7 @@
 from produto import Produto
+from refeicao import Refeicao
+from bebida import Bebida
+from sobremesa import Sobremesa
 
 lista_funcionarios = []
 
@@ -41,7 +44,9 @@ class Funcionario:
             else:
                 print("Telefone inválido. Digite o número com DDD.")
                 return False
-        
+
+    @staticmethod
+#faz com que não precise de um funcionario em expecifico para fazer um cadastro de produto :p
     def cadastrar_produto():
         if len(lista_funcionarios) == 0:
             print("nenhum funcionário cadastrado.")
@@ -51,42 +56,166 @@ class Funcionario:
         print("------CADASTRAR PRODUTO ----")
 
         while True:
-            nome = input("Digite o nome do produto: ").strip()
+            print("1- Refeição")
+            print("2- Bebida")
+            print("3- sobremesa")
+            try:
+                op = int(input("Escolha qual tipo de produto ira cadastrar: "))
+            except ValueError:
+                print("digite apenas numero")
+                continue
 
-            if nome == "":
-                print("O nome não pode ficar vazio.")
+            if op == 1:
+                while True:
+                    print("escolha: Refeição")
+                    nome = input("Digite o nome do produto: ").strip()
 
-            elif nome.isdigit():
+                    if nome == "":
+                        print("O nome não pode ficar vazio.")
 
-                print("O nome não pode ser números.")
-            else:
+
+                    elif nome.isdigit():
+                        print("O nome não pode ser números.")
+
+
+                    else:
+                        break
+
+                while True:
+                    try:
+                        preco = float(input("Digite o preço do produto: R$ "))
+                        if preco <= 0:
+                            print("O preço deve ser maior que zero.")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("digite apenas numeros")
+
+                while True:
+                    try:
+                        codigo = int(input("Digite o codigo do produto: "))
+                        if codigo <= 0:
+                            print("O codigo deve ser maior que zero.")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("digite apenas numeros")
+
+                while True:
+
+                    tamanho = input("Digite o tamanho (pequeno/medio/grande): ").strip().lower()
+
+                    if tamanho in ["pequeno", "medio", "grande"]:
+                        break
+
+                    print("Digite pequeno, medio ou grande.")
+
+                produto = Refeicao(nome, preco, codigo, tamanho)
                 break
 
-        while True:
-            try:
-                preco = float(input("Digite o preço do produto: R$ "))
-                if preco <= 0:
-                    print("O preço deve ser maior que zero.")
-                else:
-                    break
+            elif op == 2:
+                while True:
+                    print("escolha: Bebida")
+                    nome = input("Digite o nome do produto: ").strip()
 
-            except ValueError:
-                print("digite apenas numeros")
+                    if nome == "":
+                        print("O nome não pode ficar vazio.")
 
-        while True:
-            try:
-                codigo = int(input("Digite o codigo do produto: "))
-                if codigo <= 0:
-                    print("O codigo deve ser maior que zero.")
-                else:
-                    break
+                    elif nome.isdigit():
+                        print("O nome não pode ser números.")
+                    else:
+                        break
 
-            except ValueError:
-                print("digite apenas numeros")
+                while True:
+                    try:
+                        preco = float(input("Digite o preço do produto: R$ "))
+                        if preco <= 0:
+                            print("O preço deve ser maior que zero.")
+                        else:
+                            break
 
-        produto = Produto(nome, preco, codigo)
-        print("Produto cadastrado com sucesso!")
-        return produto
+                    except ValueError:
+                        print("digite apenas numeros")
+
+                while True:
+                    try:
+                        codigo = int(input("Digite o codigo do produto: "))
+                        if codigo <= 0:
+                            print("O codigo deve ser maior que zero.")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("digite apenas numeros")
+                while True:
+                    try:
+                        ml = int(input("Digite a quantidade em ml: "))
+                    
+                        if ml <= 0:
+                            print("A quantidade deve ser maior que zero.")
+
+                        else:
+                            break
+
+                    except ValueError:
+                        print("digite apenas numeros (em ml)")
+
+                produto = Bebida(nome, preco, codigo, ml)
+
+            elif op == 3:
+                while True:
+                    print("escolha: sobremesa")
+                    nome = input("Digite o nome do produto: ").strip()
+
+                    if nome == "":
+                        print("O nome não pode ficar vazio.")
+
+                    elif nome.isdigit():
+                        print("O nome não pode ser números.")
+                    else:
+                        break
+
+                while True:
+                    try:
+                        preco = float(input("Digite o preço do produto: R$ "))
+
+                        if preco <= 0:
+                            print("O preço deve ser maior que zero.")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("digite apenas numeros")
+
+                while True:
+                    try:
+                        codigo = int(input("Digite o codigo do produto: "))
+                        if codigo <= 0:
+                            print("O codigo deve ser maior que zero.")
+                        else:
+                            break
+
+                    except ValueError:
+                        print("digite apenas numeros")
+
+                while True:
+                        especial = input("A sobremesa é especial? (sim/nao): ").strip().lower()
+
+                        if especial == "sim" or especial == "nao":
+                            break
+
+                        print("Digite apenas sim ou nao.")
+
+                produto = Sobremesa(nome, preco, codigo, especial)
+
+            else:
+                print("Opção inválida.")
+                return None
+
+            print("Produto cadastrado com sucesso!")
+            return produto
 
     def exibir_dados_Funcionario(self):
         print("-------dados do funcioario------")
