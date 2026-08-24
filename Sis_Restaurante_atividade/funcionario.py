@@ -33,17 +33,14 @@ class Funcionario:
     def set_telefone(self,telefone):
 
         while True:  
-            telefone = input("Digite o seu telefone (com DDD): ")
-# Remove espaços ou caracteres especiais, se quiser
             telefone_limpo = "".join(filter(str.isdigit, telefone))
-# Verifica se o tamanho tem 10 ou 11 dígitos (ex: 11988887777), meu tratamento de erro q tava dando erro que ele tinha que tratar,desist
+
             if len(telefone_limpo) == 11 or len(telefone_limpo) == 10:
-                print("Telefone válido!")
+                self.__telefone = telefone_limpo
+                return True
             else:
                 print("Telefone inválido. Digite o número com DDD.")
-
-            self.__telefone = telefone_limpo
-            return True
+                return False
         
     def cadastrar_produto():
         if len(lista_funcionarios) == 0:

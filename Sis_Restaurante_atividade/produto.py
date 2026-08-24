@@ -23,5 +23,5 @@ class Produto:
     #preço original ante de passar pela regra, polimorfismo
 
     def exibir_produto(self):
-        print (f"Código: {self.codigo}" f"{self.__nome} - "f"R$ {self.calcular_preco():.2f}")
+        print (f"Código: {self.codigo}" f" {self.__nome} - "f"R$ {self.calcular_preco():.2f}")
 
