@@ -43,7 +43,7 @@ class Pedidos:
 
         print("\n========== PEDIDO ==========")
         print(f"Cliente: {self.cliente.get_nome()}")
-        print(f"Código: {self.cliente.getcodigo()}")
+        print(f"Código: {self.cliente.get_codigo()}")
         print("\nProdutos:")
 
         if len(self.produtos) == 0:

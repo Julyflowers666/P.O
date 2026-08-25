@@ -32,7 +32,7 @@ def selecionar_cliente():
 
 def Fazer_pedido(cliente, lista_produtos):
 
-    pedido = Pedidos(cliente)
+    pedido = Pedidos(cliente) 
 
     while True:
         print("========== MENU DO PEDIDO ==========")
@@ -55,7 +55,7 @@ def Fazer_pedido(cliente, lista_produtos):
             print("\n========== PRODUTOS ==========")
 
             for produto in lista_produtos:
-                print(f"Código: {produto.codigo()} | "f"Nome: {produto.get_nome()} | "f"Preço: R$ {produto.calcular_preco():.2f}")
+                print(f"Código: {produto.codigo} | "f"Nome: {produto.get_nome()} | "f"Preço: R$ {produto.calcular_preco():.2f}")
 
             
             try:
@@ -69,7 +69,7 @@ def Fazer_pedido(cliente, lista_produtos):
 
             for produto in lista_produtos:
 
-                if produto.codigo() == codigo:
+                if produto.codigo == codigo:
                     produto_encontrado = produto
                     break
 

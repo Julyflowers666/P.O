@@ -10,6 +10,9 @@ class Produto:
     def get_preco(self):
         return self.__preco
 
+    def get_codigo(self):
+        return self.codigo
+
     def set_preco(self, preco):
         if preco <= 0:
             print("O preço deve ser maior que zero.")
