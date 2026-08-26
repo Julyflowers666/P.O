@@ -3,6 +3,7 @@ from refeicao import Refeicao
 from bebida import Bebida
 from sobremesa import Sobremesa
 
+#lista_funcionarios = funcionarios()
 lista_funcionarios = []
 
 class Funcionario:

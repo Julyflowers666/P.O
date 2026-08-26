@@ -39,7 +39,6 @@ def Fazer_pedido(cliente, lista_produtos):
         print("1 - Adicionar produto")
         print("2 - Exibir pedido")
         print("3 - Finalizar pedido")
-        print("4 - Sair")
         try:
             op = int(input("Escolha uma opção: "))
         except ValueError:
@@ -86,10 +85,6 @@ def Fazer_pedido(cliente, lista_produtos):
             if pedido.fechar_pedido():
                 pedido.exibir_pedido()
                 break
-
-        elif op == 4:
-            print("Saindo do pedido...")
-            break
 
         else:
             print("Opção inválida.")
@@ -141,6 +136,7 @@ def cadastrar_funcionario():
     #return funcionario
     #funcionarios.append(funcionario)
     #return funcionarios
+    #errado
 
 
 def cadastrar_cliente():
@@ -251,34 +247,36 @@ def Sistema_principal():
         else:
             print("Opção inválida.")
 def produtos():
-    #lista_de_produtos =[]
+
     produto1 = Refeicao("Hambúrguer", 25.00, 12, "grande")
     produto2 = Refeicao("Batata Frita", 12.00, 13, "medio")
 
     produto3 = Bebida("Refrigerante", 7.00, 7, 400)
     produto4 = Bebida("Refrigerante", 7.00, 9, 600)
 
-    produto5 = Refeicao("Hambúrguer", 25.00, 11, "medio")
+    produto5 = Refeicao("Pizza", 60.00, 11, "grande")
 
-    produto6 = Sobremesa("Pudim", 20.00, 20, "especial")
+    produto6 = Sobremesa("Pudim", 10.00, 20, "especial")
 
     return [produto1, produto2, produto3, produto4, produto5, produto6]
 
 lista_produtos = produtos()
 clientes = []
+#clientes = cliente()
 
+#RETIRADO para ser possivel cadastrar.
 #def funcionarios ():
 #
-#   funcionario1 = Funcionario("João", "12345678911", 123)
-#    funcionario2 = Funcionario("ana", "12345678912", 132)
-#    funcionario3 = Funcionario("vitor", "12345678913", 143)
+#   funcionario1 = Funcionario("eliandro", "12345678911", 123)
+#    funcionario2 = Funcionario("vinicios", "12345678912", 132)
+#    funcionario3 = Funcionario("sarah", "12345678913", 143)
 
 #    return [funcionario1,funcionario2, funcionario3]
 
 #def cliente():
-#    cliente1 = Cliente(144, "clara", "1234567899")
-#
-#    return [cliente1]
+#    cliente1 = Cliente(144, "dylan", "1234567899")
+#    cliente2 = Cliente(154, "Heloa", "1234567898")
+#    return [cliente1, cliente2]
 
 
 if __name__ == "__main__":
